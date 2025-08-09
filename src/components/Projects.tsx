@@ -20,7 +20,7 @@ const projects = [
   {
     id: 2,
     title: "AI Resume/CV Analyzer",
-    description: "An AI-powered tool for analyzing resumes and CVs, providing feedback and suggestions for improvement.",
+  description: "An AI-powered tool for analyzing resumes and CVs, inspired by modern AI ATS (Applicant Tracking System) scanners. The goal is to help users optimize their applications and increase their chances of getting more interviews.",
     image: "/resume.png",
     technologies: ["Python", "OpenAI API"],
     github: "https://github.com/Georgi-Zahariev/ai-resume-analyzer",
@@ -30,7 +30,7 @@ const projects = [
   {
     id: 3,
     title: "Online Review Analyzer",
-    description: "A tool for analyzing online reviews, providing insights and sentiment analysis.",
+  description: "A machine learning project for analyzing online reviews. I trained a sentiment analysis model on real-world review data, and when tested, it achieved strong performance in classifying review sentiment and extracting useful insights.",
     image: "/review.png",
     technologies: ["Python", "Pandas", "Scikit-learn", "logistic regression", "TF-IDF"],
     github: "https://github.com/Georgi-Zahariev/review-classification",
@@ -40,7 +40,7 @@ const projects = [
   {
     id: 4,
     title: "Llama Search",
-    description: "Analytics dashboard for social media metrics with data visualization and automated reporting features.",
+  description: "Team project for a Software Engineering class: we built an AI chat system using a local language model, boosting, and sentiment analysis. The project was motivated by security concerns with external AI services—targeting corporations and government, ensuring sensitive data never leaves the local machine or network.",
     image: "/llama.png",
     technologies: ["Python", "Local LLM"],
     github: "https://github.com/mithranm/llamasearch",
@@ -69,7 +69,6 @@ const projects = [
         "Tailwind CSS v4", 
         "Framer Motion", 
         "Lucide React",
-        "Vercel"
     ],
     github: "https://github.com/Georgi-Zahariev/portfolio",
     live: "#",
@@ -82,7 +81,7 @@ const projects = [
     image: "/algo.png",
     technologies: ["Java"],
     github: "#",
-    live: "#",
+    live: "https://youtu.be/CxiiMgNOmiA",
     featured: false,
   },
 ];
@@ -138,22 +137,38 @@ export default function Projects() {
                 
                 {/* Overlay buttons */}
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <motion.a
-                    href={project.github}
+                  <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300"
+                    onClick={() => {
+                      if (project.github && project.github !== "#" && project.github !== "") {
+                        window.open(project.github, "_blank");
+                      } else {
+                        alert("GitHub source is not available for this project.");
+                      }
+                    }}
                   >
                     <Github className="w-5 h-5" />
-                  </motion.a>
-                  <motion.a
-                    href={project.live}
+                  </motion.button>
+                  <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300"
+                    onClick={() => {
+                      if (project.live && project.live !== "#" && project.live !== "") {
+                        window.open(project.live, "_blank");
+                      } else {
+                        if (project.title === "Portfolio Website") {
+                          alert("You are currently exploring this project – enjoy!");
+                        } else {
+                          alert("Live demo is not available for this project.");
+                        }
+                      }
+                    }}
                   >
                     <ExternalLink className="w-5 h-5" />
-                  </motion.a>
+                  </motion.button>
                 </div>
               </div>
 
@@ -180,20 +195,40 @@ export default function Projects() {
 
                 {/* Action Links */}
                 <div className="flex gap-4">
-                  <a
-                    href={project.github}
+                  <button
+                    onClick={() => {
+                      if (project.github && project.github !== "#" && project.github !== "") {
+                        window.open(project.github, "_blank");
+                      } else {
+                        if (project.title === "Portfolio Website") {
+                          alert("You are currently exploring this project – enjoy!");
+                        } else {
+                          alert("GitHub source is not available for this project.");
+                        }
+                      }
+                    }}
                     className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     <Github className="w-4 h-4" />
                     <span className="text-sm">Code</span>
-                  </a>
-                  <a
-                    href={project.live}
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (project.live && project.live !== "#" && project.live !== "") {
+                        window.open(project.live, "_blank");
+                      } else {
+                        if (project.title === "Portfolio Website") {
+                          alert("You are currently exploring this project – enjoy!");
+                        } else {
+                          alert("Live demo is not available for this project.");
+                        }
+                      }
+                    }}
                     className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm">Live Demo</span>
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -240,7 +275,7 @@ export default function Projects() {
                 </p>
                 
                 <div className="flex flex-wrap gap-1 mb-4">
-                  {project.technologies.slice(0, 3).map((tech) => (
+                  {project.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded"
@@ -248,26 +283,33 @@ export default function Projects() {
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 3 && (
-                    <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
                 </div>
 
                 <div className="flex gap-4">
-                  <a
-                    href={project.github}
+                  <button
+                    onClick={() => {
+                      if (project.github && project.github !== "#" && project.github !== "") {
+                        window.open(project.github, "_blank");
+                      } else {
+                        alert("GitHub source is not available for this project. Please check the live demo instead.");
+                      }
+                    }}
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     <Github className="w-4 h-4" />
-                  </a>
-                  <a
-                    href={project.live}
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (project.live && project.live !== "#" && project.live !== "") {
+                        window.open(project.live, "_blank");
+                      } else {
+                        alert("Live demo is not available for this project. Please check the GitHub source instead.");
+                      }
+                    }}
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     <ExternalLink className="w-4 h-4" />
-                  </a>
+                  </button>
                 </div>
               </motion.div>
             ))}
