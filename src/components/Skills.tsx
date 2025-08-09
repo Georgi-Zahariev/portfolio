@@ -9,8 +9,10 @@ import {
   SiGit, SiDocker, SiVercel, SiKubernetes, SiGithubactions,
   SiPostgresql, SiOracle, SiMongodb, SiSqlite,
   SiAmazon, SiLinux,
-  SiPandas, SiNumpy, SiScikitlearn, SiJupyter, SiTensorflow
+  SiPandas, SiNumpy, SiScikitlearn, SiJupyter, SiTensorflow,
+  SiHtml5, SiCss3, SiGnubash
 } from "react-icons/si";
+import { FaServer, FaPlug, FaShieldAlt, FaEye } from "react-icons/fa";
 import { 
   FaPuzzlePiece, FaHandshake, FaBolt, FaComments, FaClipboardList, FaCrown 
 } from "react-icons/fa";
@@ -23,30 +25,34 @@ const skillCategories = {
     skills: {
       "Programming Languages": [
         { name: "Java", icon: SiOpenjdk, level: 95 },
-        { name: "Python", icon: SiPython, level: 80 },
-        { name: "Go", icon: SiGo, level: 75 },
-        { name: "C", icon: SiC, level: 75 }
+        { name: "Python", icon: SiPython, level: 90 },
+        { name: "Go", icon: SiGo, level: 85 },
+        { name: "C", icon: SiC, level: 80 }
       ],
-      "Frameworks & Libraries": [
-        { name: "React", icon: SiReact, level: 75 },
-        { name: "Next.js", icon: SiNextdotjs, level: 75 },
-      ],
-      "Tools & Platforms": [
-        { name: "Git", icon: SiGit, level: 90 },
-        { name: "Docker", icon: SiDocker, level: 90 },
-        { name: "ORMs", icon: MdStorage, level: 75 },
+      "Web Technologies": [
+        { name: "HTML", icon: SiHtml5, level: 85 },
+        { name: "CSS", icon: SiCss3, level: 80 },
+        { name: "JavaScript", icon: SiJavascript, level: 75 },
+        { name: "React", icon: SiReact, level: 75 }
       ],
       "Databases": [
-        { name: "PostgreSQL", icon: SiPostgresql, level: 80 },
-        { name: "OracleDB", icon: SiOracle, level: 80 }
+        { name: "PostgreSQL", icon: SiPostgresql, level: 85 },
+        { name: "ORMs", icon: FaPlug, level: 85 },
+        { name: "Oracle", icon: SiOracle, level: 80 }
       ],
       "Backend & DevOps": [
-        { name: "AWS", icon: SiAmazon, level: 70 }
+        { name: "Git", icon: SiGit, level: 95 },
+        { name: "REST APIs", icon: FaServer, level: 90 },
+        { name: "Docker", icon: SiDocker, level: 80 },
+        { name: "AWS", icon: SiAmazon, level: 75 },
+        { name: "Keycloak", icon: FaShieldAlt, level: 70 }
       ],
       "AI/ML & Data": [
+        { name: "Prompt Engineering", icon: FaComments, level: 85 },
         { name: "Pandas", icon: SiPandas, level: 80 },
         { name: "NumPy", icon: SiNumpy, level: 80 },
         { name: "Scikit-learn", icon: SiScikitlearn, level: 80 },
+        { name: "OpenAI API", icon: FaServer, level: 80 }
       ]
     }
   },
@@ -55,26 +61,27 @@ const skillCategories = {
     description: "Technologies I've worked with and am learning",
     skills: {
       "Programming Languages": [
-        { name: "JavaScript", icon: SiJavascript, level: 50 },
-        { name: "TypeScript", icon: SiTypescript, level: 45 }
+        { name: "Bash", icon: SiGnubash, level: 60 }
       ],
-      "Frameworks & Libraries": [
-        { name: "Vue.js", icon: SiVuedotjs, level: 40 },
-        { name: "Tailwind CSS", icon: SiTailwindcss, level: 40 },
-      ],
-      "Tools & Platforms": [
-        { name: "Kubernetes", icon: SiKubernetes, level: 60 },
-        { name: "GitHub Actions", icon: SiGithubactions, level: 55 }
+      "Web Technologies": [
+        { name: "Next.js", icon: SiNextdotjs, level: 75 },
+        { name: "TypeScript", icon: SiTypescript, level: 70 },
+        { name: "Tailwind CSS", icon: SiTailwindcss, level: 70 },
+        { name: "Vue.js", icon: SiVuedotjs, level: 40 }
       ],
       "Databases": [
         { name: "MongoDB", icon: SiMongodb, level: 60 },
         { name: "SQLite", icon: SiSqlite, level: 55 }
       ],
       "Backend & DevOps": [
-        { name: "Linux", icon: SiLinux, level: 60 }
+        { name: "WebSocket APIs", icon: FaServer, level: 65 },
+        { name: "Kubernetes", icon: SiKubernetes, level: 60 },
+        { name: "Linux", icon: SiLinux, level: 60 },
+        { name: "GitHub Actions", icon: SiGithubactions, level: 55 }
       ],
       "AI/ML & Data": [
-        { name: "TensorFlow", icon: SiTensorflow, level: 40 },
+        { name: "Computer Vision Models", icon: FaEye, level: 50 },
+        { name: "TensorFlow", icon: SiTensorflow, level: 40 }
       ]
     }
   }
@@ -224,6 +231,22 @@ export default function Skills() {
           </div>
         </motion.div>
       </div>
+
+      {/* AI Tools Statement */}
+      <motion.div 
+        className="max-w-4xl mx-auto mt-16 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6, delay: 1 }}
+      >
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          I actively try to use different languages, frameworks, and tools that are widely used in the field 
+          to gain better exposure and experience while at university. Moreover, to help myself learn and develop, 
+          I am using AI tools like <span className="font-semibold text-blue-600 dark:text-blue-400">GitHub Copilot</span> and 
+          <span className="font-semibold text-green-600 dark:text-green-400"> ChatGPT</span>, and experimenting with 
+          other cutting-edge AI technologies. Using them properly and efficiently is my goal so I can be a better engineer.
+        </p>
+      </motion.div>
     </section>
   );
 }
