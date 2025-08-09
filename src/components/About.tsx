@@ -52,21 +52,6 @@ export default function About() {
                 </div>
               </motion.div>
               
-              {/* Floating Tech Badges */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                JS
-              </motion.div>
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-              >
-                TS
-              </motion.div>
             </div>
           </motion.div>
 
@@ -78,32 +63,24 @@ export default function About() {
             className="space-y-6"
           >
             <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              Passionate Developer & Problem Solver
+                Who am I?
             </h3>
             
             <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
-              <p>
-                I'm a Computer Science student and software developer with a passion for creating 
-                beautiful, functional web applications. With expertise in modern technologies 
-                like React, Next.js, and TypeScript, I love bringing ideas to life through code.
-              </p>
-              
-              <p>
-                When I'm not coding, you can find me exploring new technologies, 
-                working on personal projects, or diving deep into AI and Machine Learning. 
-                I believe in continuous learning and staying up-to-date with the latest 
-                trends in technology.
-              </p>
-              
-              <p>
-                My goal is to create digital experiences that not only look great 
-                but also provide exceptional user experiences and solve real-world problems.
-              </p>
+                <p>
+                  I am a dedicated Computer Science student and NCAA Division 1 student-athlete (volleyball) with a 4.0 GPA, driven by a passion for both academic and athletic excellence. My journey is defined by discipline, teamwork, and a relentless pursuit of growth.
+                </p>
+                <p>
+                  My interests bridge both the traditional foundations of software—backend, full-stack, and web development—and the rapidly evolving fields that are shaping the future of business and society, such as AI, Machine Learning, and Data Science. I am drawn to areas that are driving innovation and transformation, and I thrive on building solutions that make a real impact.
+                </p>
+                <p>
+                  Motivated for big things, I am always eager to learn, collaborate, and take on new challenges. Whether on the court or at the keyboard, I bring energy, curiosity, and a vision for making a difference in technology and beyond.
+                </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4 pt-6">
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">2+</div>
+                <div className="text-2xl font-bold text-blue-600">6+</div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Years Learning</div>
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
