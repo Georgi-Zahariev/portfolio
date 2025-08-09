@@ -19,38 +19,34 @@ import { MdStorage } from "react-icons/md";
 const skillCategories = {
   comfortable: {
     title: "Comfortable With",
-    description: "Technologies I use regularly and feel confident with",
+    description: "Technologies I use often and feel confident with",
     skills: {
       "Programming Languages": [
-        { name: "Java", icon: SiOpenjdk, level: 90 },
-        { name: "Go", icon: SiGo, level: 85 },
-        { name: "Python", icon: SiPython, level: 95 },
-        { name: "C", icon: SiC, level: 80 }
+        { name: "Java", icon: SiOpenjdk, level: 95 },
+        { name: "Python", icon: SiPython, level: 80 },
+        { name: "Go", icon: SiGo, level: 75 },
+        { name: "C", icon: SiC, level: 75 }
       ],
       "Frameworks & Libraries": [
-        { name: "React", icon: SiReact, level: 90 },
-        { name: "Next.js", icon: SiNextdotjs, level: 85 },
-        { name: "Tailwind CSS", icon: SiTailwindcss, level: 90 },
-        { name: "Node.js", icon: SiNodedotjs, level: 75 }
+        { name: "React", icon: SiReact, level: 75 },
+        { name: "Next.js", icon: SiNextdotjs, level: 75 },
       ],
       "Tools & Platforms": [
-        { name: "Git", icon: SiGit, level: 85 },
-        { name: "Docker", icon: SiDocker, level: 95 },
+        { name: "Git", icon: SiGit, level: 90 },
+        { name: "Docker", icon: SiDocker, level: 90 },
         { name: "ORMs", icon: MdStorage, level: 75 },
-        { name: "Vercel", icon: SiVercel, level: 80 }
       ],
       "Databases": [
-        { name: "PostgreSQL", icon: SiPostgresql, level: 70 },
-        { name: "OracleDB", icon: SiOracle, level: 70 }
+        { name: "PostgreSQL", icon: SiPostgresql, level: 80 },
+        { name: "OracleDB", icon: SiOracle, level: 80 }
       ],
       "Backend & DevOps": [
         { name: "AWS", icon: SiAmazon, level: 70 }
       ],
       "AI/ML & Data": [
-        { name: "Pandas", icon: SiPandas, level: 55 },
-        { name: "NumPy", icon: SiNumpy, level: 50 },
-        { name: "Scikit-learn", icon: SiScikitlearn, level: 45 },
-        { name: "Jupyter", icon: SiJupyter, level: 75 }
+        { name: "Pandas", icon: SiPandas, level: 80 },
+        { name: "NumPy", icon: SiNumpy, level: 80 },
+        { name: "Scikit-learn", icon: SiScikitlearn, level: 80 },
       ]
     }
   },
@@ -63,10 +59,11 @@ const skillCategories = {
         { name: "TypeScript", icon: SiTypescript, level: 45 }
       ],
       "Frameworks & Libraries": [
-        { name: "Vue.js", icon: SiVuedotjs, level: 45 },
+        { name: "Vue.js", icon: SiVuedotjs, level: 40 },
+        { name: "Tailwind CSS", icon: SiTailwindcss, level: 40 },
       ],
       "Tools & Platforms": [
-        { name: "Kubernetes", icon: SiKubernetes, level: 30 },
+        { name: "Kubernetes", icon: SiKubernetes, level: 60 },
         { name: "GitHub Actions", icon: SiGithubactions, level: 55 }
       ],
       "Databases": [
