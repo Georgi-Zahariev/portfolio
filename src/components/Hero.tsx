@@ -1,31 +1,48 @@
 "use client";
 
+
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
+  const [particles, setParticles] = useState<any[]>([]);
+
+  useEffect(() => {
+    // Only run on client
+    const newParticles = Array.from({ length: 50 }, () => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      width: `${Math.random() * 4 + 1}px`,
+      height: `${Math.random() * 4 + 1}px`,
+      duration: Math.random() * 10 + 10,
+      delay: Math.random() * 10,
+    }));
+    setParticles(newParticles);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
       {/* Animated background particles */}
       <div className="absolute inset-0">
-        {[...Array(50)].map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={i}
             className="absolute bg-white/10 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 4 + 1}px`,
-              height: `${Math.random() * 4 + 1}px`,
+              left: p.left,
+              top: p.top,
+              width: p.width,
+              height: p.height,
             }}
             animate={{
               y: [0, -100, 0],
               opacity: [0, 1, 0],
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: p.duration,
               repeat: Infinity,
-              delay: Math.random() * 10,
+              delay: p.delay,
             }}
           />
         ))}
@@ -86,7 +103,7 @@ export default function Hero() {
               className="px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full font-medium hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.open('https://drive.google.com/file/d/14d_7Z2XSTad9lemNsA6YhQEan5t2eMZ1/view?usp=sharing', '_blank')}
+              onClick={() => window.open('https://drive.google.com/drive/folders/1TzRMs2ca2qrk7ijaP4wptTIYiLcEMx6d?usp=drive_link', '_blank')}
             >
               My Resume/CV
             </motion.button>
