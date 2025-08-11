@@ -13,7 +13,7 @@ jobs:
       matrix:
         include:
         - dockerfile: ./Dockerfile
-          image: Georgi-Zahariev/portfolio
+          image: georgizahariev/portfolio
 
     steps:
       - name: Checkout
