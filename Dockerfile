@@ -29,7 +29,9 @@ COPY --from=builder /app/package.json ./
 
 COPY --from=builder /app/public ./public
 
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+
+COPY --from=deps /app/node_modules ./node_modules
 
 USER nextjs
 
