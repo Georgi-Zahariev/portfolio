@@ -184,9 +184,6 @@ export default function Skills() {
                                 }}
                               />
                             </div>
-                            <span className="text-sm text-gray-500 dark:text-gray-400 w-8">
-                              {skill.level}%
-                            </span>
                           </div>
                         </motion.div>
                       );
@@ -244,7 +241,11 @@ export default function Skills() {
           to gain better exposure and experience while at university. Moreover, to help myself learn and develop, 
           I am using AI tools like <span className="font-semibold text-blue-600 dark:text-blue-400">GitHub Copilot</span> and 
           <span className="font-semibold text-green-600 dark:text-green-400"> ChatGPT</span>, and experimenting with 
-          other cutting-edge AI technologies. Using them properly and efficiently is my goal so I can be a better engineer.
+          other cutting-edge AI technologies.
+        </p>
+        
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          <br />My goal is to <b>use AI technologies properly and efficiently</b> so I can <b>become a better engineer</b>.
         </p>
       </motion.div>
     </section>

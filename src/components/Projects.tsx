@@ -14,7 +14,6 @@ const projects = [
     image: "/online-restaurant.png",
     technologies: ["Go", "React", "PostgreSQL", "Gorm ORM", "Docker", "Github"],
     github: "https://github.com/Georgi-Zahariev/online-restaurant",
-    live: "#",
     featured: true,
   },
   {
@@ -24,7 +23,6 @@ const projects = [
     image: "/resume.png",
     technologies: ["Python", "OpenAI API"],
     github: "https://github.com/Georgi-Zahariev/ai-resume-analyzer",
-    live: "#",
     featured: true,
   },
   {
@@ -34,7 +32,6 @@ const projects = [
     image: "/review.png",
     technologies: ["Python", "Pandas", "Scikit-learn", "logistic regression", "TF-IDF"],
     github: "https://github.com/Georgi-Zahariev/review-classification",
-    live: "#",
     featured: false,
   },
   {
@@ -44,7 +41,6 @@ const projects = [
     image: "/llama.png",
     technologies: ["Python", "Local LLM"],
     github: "https://github.com/mithranm/llamasearch",
-    live: "#",
     featured: false,
   },
   {
@@ -54,7 +50,6 @@ const projects = [
     image: "/cripto.png",
     technologies: ["Go", "Advanced Algorithms", "WebSocket", "Binance API"],
     github: "https://github.com/Georgi-Zahariev/raven-dev-challenge",
-    live: "#",
     featured: false,
   },
   {
@@ -71,7 +66,6 @@ const projects = [
         "Lucide React",
     ],
     github: "https://github.com/Georgi-Zahariev/portfolio",
-    live: "#",
     featured: true,
   },
    {
@@ -151,24 +145,6 @@ export default function Projects() {
                   >
                     <Github className="w-5 h-5" />
                   </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-all duration-300"
-                    onClick={() => {
-                      if (project.live && project.live !== "#" && project.live !== "") {
-                        window.open(project.live, "_blank");
-                      } else {
-                        if (project.title === "Portfolio Website") {
-                          alert("You are currently exploring this project – enjoy!");
-                        } else {
-                          alert("Live demo is not available for this project.");
-                        }
-                      }
-                    }}
-                  >
-                    <ExternalLink className="w-5 h-5" />
-                  </motion.button>
                 </div>
               </div>
 
@@ -211,23 +187,6 @@ export default function Projects() {
                   >
                     <Github className="w-4 h-4" />
                     <span className="text-sm">Code</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (project.live && project.live !== "#" && project.live !== "") {
-                        window.open(project.live, "_blank");
-                      } else {
-                        if (project.title === "Portfolio Website") {
-                          alert("You are currently exploring this project – enjoy!");
-                        } else {
-                          alert("Live demo is not available for this project.");
-                        }
-                      }
-                    }}
-                    className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm">Live Demo</span>
                   </button>
                 </div>
               </div>
@@ -297,18 +256,6 @@ export default function Projects() {
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
                     <Github className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      if (project.live && project.live !== "#" && project.live !== "") {
-                        window.open(project.live, "_blank");
-                      } else {
-                        alert("Live demo is not available for this project. Please check the GitHub source instead.");
-                      }
-                    }}
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4" />
                   </button>
                 </div>
               </motion.div>
