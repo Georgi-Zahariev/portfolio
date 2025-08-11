@@ -8,13 +8,6 @@ jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - dockerfile: ./Dockerfile
-          image: georgizahariev/portfolio
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,13 +28,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ matrix.image }}
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/portfolio
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
-          file:  ${{ matrix.dockerfile }}
+          file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
