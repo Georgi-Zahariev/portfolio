@@ -6,7 +6,14 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<Array<{
+    left: string;
+    top: string;
+    width: string;
+    height: string;
+    duration: number;
+    delay: number;
+  }>>([]);
 
   useEffect(() => {
     // Only run on client

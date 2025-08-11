@@ -36,7 +36,12 @@ export default function Contact() {
     }
   ];
 
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<Array<{
+    left: string;
+    top: string;
+    duration: number;
+    delay: number;
+  }>>([]);
 
   useEffect(() => {
     // Only run on client

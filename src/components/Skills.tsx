@@ -5,18 +5,17 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { 
   SiOpenjdk, SiGo, SiPython, SiC, SiJavascript, SiTypescript,
-  SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiVuedotjs,
-  SiGit, SiDocker, SiVercel, SiKubernetes, SiGithubactions,
+  SiReact, SiNextdotjs, SiTailwindcss, SiVuedotjs,
+  SiGit, SiDocker, SiKubernetes, SiGithubactions,
   SiPostgresql, SiOracle, SiMongodb, SiSqlite,
   SiAmazon, SiLinux,
-  SiPandas, SiNumpy, SiScikitlearn, SiJupyter, SiTensorflow,
+  SiPandas, SiNumpy, SiScikitlearn, SiTensorflow,
   SiHtml5, SiCss3, SiGnubash
 } from "react-icons/si";
 import { FaServer, FaPlug, FaShieldAlt, FaEye } from "react-icons/fa";
 import { 
   FaPuzzlePiece, FaHandshake, FaBolt, FaComments, FaClipboardList, FaCrown 
 } from "react-icons/fa";
-import { MdStorage } from "react-icons/md";
 
 const skillCategories = {
   comfortable: {
@@ -58,7 +57,7 @@ const skillCategories = {
   },
   familiar: {
     title: "Somewhat Familiar",
-    description: "Technologies I've worked with and am learning",
+    description: "Technologies I&apos;ve worked with and am learning",
     skills: {
       "Programming Languages": [
         { name: "Bash", icon: SiGnubash, level: 60 }
@@ -114,7 +113,7 @@ export default function Skills() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Here's an overview of my technical skills and experience levels with different technologies.
+            Here&apos;s an overview of my technical skills and experience levels with different technologies.
           </p>
         </motion.div>
 
