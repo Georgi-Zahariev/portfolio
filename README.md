@@ -27,7 +27,7 @@ A modern, responsive portfolio website built with Next.js 15, TypeScript, and Ta
 - **Components**: Shadcn/ui
 
 ### Development Tools
-- **Package Manager**: pnpm (npm)
+- **Package Manager**: npm (pnpm)
 - **Development Server**: Turbopack
 - **Code Quality**: TypeScript
 - **Version Control**: Git
