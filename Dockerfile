@@ -1,39 +1,47 @@
-FROM node:22-alpine AS base
-
-FROM base AS deps
+# Build stage
+FROM node:22-alpine AS builder
 
 WORKDIR /app 
 
-COPY package.json package-lock.json* pnpm-lock.yaml* ./
+COPY package.json package-lock.json* ./
 
-RUN npm update && npm install
+RUN npm ci
 
-FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npm run build
 
-FROM base AS runner
-WORKDIR /app
+# Production stage - nginx for serving static files
+FROM nginx:alpine AS runner
 
-ENV NODE_ENV=production
+COPY --from=builder /app/out /usr/share/nginx/html
 
-ENV NEXT_TELEMETRY_DISABLED=1
+COPY <<EOF /etc/nginx/conf.d/default.conf
+server {
+    listen 3000;
+    server_name localhost;
+    
+    root /usr/share/nginx/html;
+    index index.html;
+    
+    location / {
+        try_files \$uri \$uri.html \$uri/ /index.html;
+    }
+    
+    # Enable gzip compression
+    gzip on;
+    gzip_vary on;
+    gzip_min_length 1024;
+    gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml+rss application/json;
+    
+    # Cache static assets
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js|svg|woff|woff2|ttf|eot)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+}
+EOF
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+EXPOSE 80
 
-COPY --from=builder /app/package.json ./
-
-COPY --from=builder /app/public ./public
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-
-COPY --from=deps /app/node_modules ./node_modules
-
-USER nextjs
-
-ENV HOSTNAME="0.0.0.0"
-CMD ["npm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
