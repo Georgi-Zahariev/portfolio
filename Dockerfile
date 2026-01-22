@@ -12,17 +12,29 @@ COPY . .
 RUN npm run build
 
 # Production stage - nginx for serving static files
-FROM nginx:alpine AS runner
+FROM nginx:1.27-alpine AS runner
 
-COPY --from=builder /app/out /usr/share/nginx/html
+# Copy static files
+COPY --from=builder --chown=nginx:nginx /app/out /usr/share/nginx/html
 
+# Configure nginx
 COPY <<EOF /etc/nginx/conf.d/default.conf
 server {
-    listen 3000;
+    listen 8080;
     server_name localhost;
     
     root /usr/share/nginx/html;
     index index.html;
+    
+    # Hide nginx version
+    server_tokens off;
+    
+    # Security headers
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+    add_header Referrer-Policy "no-referrer-when-downgrade" always;
+    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline' 'unsafe-eval'" always;
     
     location / {
         try_files \$uri \$uri.html \$uri/ /index.html;
@@ -42,6 +54,18 @@ server {
 }
 EOF
 
-EXPOSE 80
+# Update permissions for non-root nginx user
+RUN chown -R nginx:nginx /var/cache/nginx && \
+    chown -R nginx:nginx /var/log/nginx && \
+    chown -R nginx:nginx /etc/nginx/conf.d && \
+    touch /var/run/nginx.pid && \
+    chown -R nginx:nginx /var/run/nginx.pid
+
+USER nginx
+
+EXPOSE 8080
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
