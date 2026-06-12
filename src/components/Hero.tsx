@@ -1,135 +1,125 @@
-"use client";
-
-
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+'use client';
 
 export default function Hero() {
-  const [particles, setParticles] = useState<Array<{
-    left: string;
-    top: string;
-    width: string;
-    height: string;
-    duration: number;
-    delay: number;
-  }>>([]);
-
-  useEffect(() => {
-    // Only run on client
-    const newParticles = Array.from({ length: 50 }, () => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      width: `${Math.random() * 4 + 1}px`,
-      height: `${Math.random() * 4 + 1}px`,
-      duration: Math.random() * 10 + 10,
-      delay: Math.random() * 10,
-    }));
-    setParticles(newParticles);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
-      {/* Animated background particles */}
-      <div className="absolute inset-0">
-        {particles.map((p, i) => (
-          <motion.div
-            key={i}
-            className="absolute bg-white/10 rounded-full"
+    <section id="about" className="hero-section" style={{ paddingTop: '7rem', paddingBottom: '5rem' }}>
+      <style>{`
+        @media (max-width: 640px) {
+          .hero-section { padding-top: 5rem !important; }
+          .hero-inner { padding: 0 1.25rem !important; }
+          .hero-name { font-size: 36px !important; }
+        }
+      `}</style>
+      <div className="hero-inner" style={{
+        maxWidth: '720px',
+        margin: '0 auto',
+        padding: '0 2rem',
+      }}>
+        {/* Eyebrow */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          marginBottom: '16px',
+        }}>
+          <span style={{
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            background: '#22c55e',
+            flexShrink: 0,
+          }} />
+          <span style={{
+            fontSize: '12px',
+            fontWeight: 500,
+            letterSpacing: '0.08em',
+            color: '#444',
+            textTransform: 'uppercase',
+          }}>
+            available for opportunities · europe (in-person, hybrid, remote)
+          </span>
+        </div>
+
+        {/* Name */}
+        <h1 className="hero-name" style={{
+          fontSize: 'clamp(36px, 6vw, 52px)',
+          fontWeight: 500,
+          letterSpacing: '-2px',
+          lineHeight: 1.05,
+          color: '#f0f0f0',
+          margin: 0,
+        }}>
+          Georgi<br />Zahariev.
+        </h1>
+
+        {/* Bio */}
+        <p style={{
+          fontSize: '15px',
+          color: '#888',
+          lineHeight: 1.7,
+          maxWidth: '500px',
+          marginTop: '20px',
+        }}>
+          Software engineer focused on backend systems, AI/ML, and full-stack development.
+          Building things that work at scale — from financial engineering to AI agent workflows.
+        </p>
+
+        {/* Actions */}
+        <div style={{
+          display: 'flex',
+          gap: '10px',
+          flexWrap: 'wrap',
+          marginTop: '28px',
+          alignItems: 'center',
+        }}>
+          <a
+            href="#projects"
             style={{
-              left: p.left,
-              top: p.top,
-              width: p.width,
-              height: p.height,
+              background: '#f0f0f0',
+              color: '#0d0d0d',
+              fontSize: '13px',
+              fontWeight: 500,
+              padding: '8px 18px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              display: 'inline-block',
             }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 1, 0],
+          >
+            view projects
+          </a>
+          <a
+            href="/resume.pdf"
+            style={{
+              border: '0.5px solid #1e1e1e',
+              color: '#ccc',
+              background: 'transparent',
+              fontSize: '13px',
+              fontWeight: 500,
+              padding: '8px 18px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              display: 'inline-block',
             }}
-            transition={{
-              duration: p.duration,
-              repeat: Infinity,
-              delay: p.delay,
+          >
+            resume
+          </a>
+          <a
+            href="https://github.com/Georgi-Zahariev"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: '13px',
+              color: '#444',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
             }}
-          />
-        ))}
+            onMouseEnter={e => (e.currentTarget.style.color = '#888')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#444')}
+          >
+            github ↗
+          </a>
+        </div>
       </div>
-
-      {/* Main content */}
-      <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Georgi Zahariev
-          </motion.h1>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h2 className="text-2xl md:text-4xl font-light mb-8 text-gray-300">
-              Software Developer and AI Enthusiast
-            </h2>
-          </motion.div>
-
-          <motion.p
-            className="text-lg md:text-xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Passionate CS student and software developer with interest in building data-driven applications. 
-            Currently exploring full-stack development, AI, ML and Data Science
-          </motion.p>
-
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <motion.button
-              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 text-white"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View My Work
-            </motion.button>
-
-            <motion.button
-              className="px-8 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full font-medium hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-white"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => window.open('https://drive.google.com/drive/folders/1TzRMs2ca2qrk7ijaP4wptTIYiLcEMx6d?usp=drive_link', '_blank')}
-            >
-              My Resume/CV
-            </motion.button>
-
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <ChevronDown 
-          className="w-8 h-8 text-white/60 cursor-pointer hover:text-white transition-colors"
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        />
-      </motion.div>
     </section>
   );
 }
