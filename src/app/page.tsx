@@ -1,23 +1,25 @@
-import Navigation from '@/components/Navigation';
+import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
+import Terminal from '@/components/Terminal';
+import Experience from '@/components/Experience';
+import Education from '@/components/Education';
 import Projects from '@/components/Projects';
+import Athletics from '@/components/Athletics';
 import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
-    <div className="font-sans">
-      <Navigation />
+    <>
+      <Nav />
       <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <About />
-        <Skills />
+        <Hero />
+        <Terminal />
+        <Experience />
+        <Education />
         <Projects />
+        <Athletics />
         <Contact />
       </main>
-    </div>
+    </>
   );
 }
